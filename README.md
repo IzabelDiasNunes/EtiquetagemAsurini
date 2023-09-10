@@ -12,3 +12,6 @@ Projeto de Iniciação Científica (PIBIC) realizado pela bolsista do CNPq e gra
 <p align="center">
   <img src="imagens/unb.png" alt="unb_logo" width="200" height="100">
 </p>
+<p align="center">
+  <img src="imagens/cnpq_logo.png" alt="cnpq_logo" width="200" height="100">
+</p>
