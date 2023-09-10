@@ -1,7 +1,7 @@
 Afixo/tema,Padrão,O que é,Etiqueta,OBS
 Sufixo,-PE,Caso locativo pontual,NONE,"Não será nem argumento, nem predicado"
-Sufixo,-IMO,Caso locativo difuso,NONE,
-Sufixo,-I,Caso locativo situacional,NONE,
+Sufixo,-IMO,Caso locativo difuso,NONE,"Não será nem argumento, nem predicado"
+Sufixo,-I,Caso locativo situacional,NONE,"Não será nem argumento, nem predicado"
 Sufixo,- y’ým,Negação de gerúndio,PRED,
 Sufixo,- e’ým,Negação de gerúndio,PRED,
 Sufixo,- y’ýw,Negação de gerúndio,PRED,
