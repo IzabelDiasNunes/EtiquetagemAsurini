@@ -1,114 +1,80 @@
-{
- "cells": [
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "id": "e0aa3f69",
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "import nltk\n",
-    "import re\n",
-    "from nltk.tag import RegexpTagger\n",
-    "from nltk.tag import DefaultTagger\n",
-    "\n",
-    "\n",
-    "text = open('relatos_asurini_compilado.txt', 'r', encoding='utf-8')\n",
-    "text = text.read()\n",
-    "text_lower = text.lower()\n",
-    "text_clean = re.sub('[.;,-:!?—()]','',text_lower)\n",
-    "set_list = list(set(text_clean.split()))\n",
-    "set_list.sort()\n",
-    "set_list\n",
-    "\n",
-    "# padrão desinências\n",
-    "\n",
-    "patterns = [\n",
-    "            (r'.*pe$', 'None'),\n",
-    "            (r'.*imo$', 'None'),\n",
-    "            (r'.*i$', 'None'),\n",
-    "            (r\".*y’ým.*\", 'PRED'),\n",
-    "            (r\".*e’ým.*\", 'PRED'),\n",
-    "            (r\".*y’ýw.*\", 'PRED'),\n",
-    "            (r'.*a$', 'ARG'),\n",
-    "            (r'a.*','PRED'),\n",
-    "            (r'o.*','PRED'),\n",
-    "            (r'pe.*','PRED'),\n",
-    "            (r'ere.*','PRED'),\n",
-    "            (r'sa.*','PRED'),\n",
-    "            (r'oro.*','PRED'),\n",
-    "            (r'.*ihí$', 'PRED'),\n",
-    "            (r'.*rapo$', 'PRED'), \n",
-    "            (r'.*reme$', 'PRED'),\n",
-    "            (r\".*mo.*\", 'PRED')\n",
-    "]\n",
-    "\n",
-    "\n",
-    "nom_tagger = nltk.RegexpTagger(patterns)\n",
-    "tags = nom_tagger.tag(set_list)\n",
-    "tags = dict(tags)\n",
-    "\n",
-    "for key, value in tags.copy().items():\n",
-    "    if value is None:\n",
-    "        tags[key] = 'NONE'\n",
-    "        \n",
-    "        \n",
-    "print(tags)\n",
-    "\n",
-    "tags\n",
-    "\n",
-    "import pandas as pd\n",
-    "from sklearn.metrics import f1_score\n",
-    "\n",
-    "# Importar o arquivo CSV para um DataFrame\n",
-    "df = pd.read_csv('etiquetas_1.csv')\n",
-    "\n",
-    "# Criar um dicionário onde a chave é a palavra e o valor é a etiqueta\n",
-    "palavra_etiqueta_dict = dict(zip(df['Palavra'], df['Etiqueta']))\n",
-    "\n",
-    "# Exemplo de outro dicionário para comparar (você pode ajustar isso)\n",
-    "dicionario_comparacao = tags\n",
-    "\n",
-    "# Separar palavras e etiquetas do dicionário de comparação\n",
-    "palavras_comparacao = list(dicionario_comparacao.keys())\n",
-    "etiquetas_comparacao = [dicionario_comparacao[palavra] for palavra in palavras_comparacao]\n",
-    "\n",
-    "# Criar listas para armazenar as etiquetas reais e previstas\n",
-    "etiquetas_reais = []\n",
-    "etiquetas_previstas = []\n",
-    "\n",
-    "# Preencher as listas de etiquetas reais e previstas\n",
-    "for palavra in palavras_comparacao:\n",
-    "    if palavra in palavra_etiqueta_dict:\n",
-    "        etiquetas_reais.append(palavra_etiqueta_dict[palavra])\n",
-    "        etiquetas_previstas.append(dicionario_comparacao[palavra])\n",
-    "\n",
-    "# Calcular o F-score usando a função f1_score do sklearn\n",
-    "\n",
-    "f_score = f1_score(etiquetas_reais, etiquetas_previstas, average='weighted')\n",
-    "print(\"F-Score:\", f_score)"
-   ]
-  }
- ],
- "metadata": {
-  "kernelspec": {
-   "display_name": "Python 3 (ipykernel)",
-   "language": "python",
-   "name": "python3"
-  },
-  "language_info": {
-   "codemirror_mode": {
-    "name": "ipython",
-    "version": 3
-   },
-   "file_extension": ".py",
-   "mimetype": "text/x-python",
-   "name": "python",
-   "nbconvert_exporter": "python",
-   "pygments_lexer": "ipython3",
-   "version": "3.11.2"
-  }
- },
- "nbformat": 4,
- "nbformat_minor": 5
-}
+import nltk
+import re
+from nltk.tag import RegexpTagger
+from nltk.tag import DefaultTagger
+
+
+text = open('relatos_asurini_compilado.txt', 'r', encoding='utf-8')
+text = text.read()
+text_lower = text.lower()
+text_clean = re.sub('[.;,-:!?—()]','',text_lower)
+set_list = list(set(text_clean.split()))
+set_list.sort()
+set_list
+
+# padrão desinências
+
+patterns = [
+            (r'.*pe$', 'None'),
+            (r'.*imo$', 'None'),
+            (r'.*i$', 'None'),
+            (r".*y’ým.*", 'PRED'),
+            (r".*e’ým.*", 'PRED'),
+            (r".*y’ýw.*", 'PRED'),
+            (r'.*a$', 'ARG'),
+            (r'a.*','PRED'),
+            (r'o.*','PRED'),
+            (r'pe.*','PRED'),
+            (r'ere.*','PRED'),
+            (r'sa.*','PRED'),
+            (r'oro.*','PRED'),
+            (r'.*ihí$', 'PRED'),
+            (r'.*rapo$', 'PRED'), 
+            (r'.*reme$', 'PRED'),
+            (r".*mo.*", 'PRED')
+]
+
+
+nom_tagger = nltk.RegexpTagger(patterns)
+tags = nom_tagger.tag(set_list)
+tags = dict(tags)
+
+for key, value in tags.copy().items():
+    if value is None:
+        tags[key] = 'NONE'
+        
+        
+print(tags)
+
+tags
+
+import pandas as pd
+from sklearn.metrics import f1_score
+
+# Importar o arquivo CSV para um DataFrame
+df = pd.read_csv('etiquetas_1.csv')
+
+# Criar um dicionário onde a chave é a palavra e o valor é a etiqueta
+palavra_etiqueta_dict = dict(zip(df['Palavra'], df['Etiqueta']))
+
+# Exemplo de outro dicionário para comparar (você pode ajustar isso)
+dicionario_comparacao = tags
+
+# Separar palavras e etiquetas do dicionário de comparação
+palavras_comparacao = list(dicionario_comparacao.keys())
+etiquetas_comparacao = [dicionario_comparacao[palavra] for palavra in palavras_comparacao]
+
+# Criar listas para armazenar as etiquetas reais e previstas
+etiquetas_reais = []
+etiquetas_previstas = []
+
+# Preencher as listas de etiquetas reais e previstas
+for palavra in palavras_comparacao:
+    if palavra in palavra_etiqueta_dict:
+        etiquetas_reais.append(palavra_etiqueta_dict[palavra])
+        etiquetas_previstas.append(dicionario_comparacao[palavra])
+
+# Calcular o F-score usando a função f1_score do sklearn
+
+f_score = f1_score(etiquetas_reais, etiquetas_previstas, average='weighted')
+print("F-Score:", f_score)
