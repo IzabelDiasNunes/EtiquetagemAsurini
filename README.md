@@ -9,6 +9,9 @@ Projeto de Iniciação Científica (PIBIC) realizado pela bolsista do CNPq e gra
 
 [Etiquetas Relato Cobra Coral](etiquetas_1.csv)
 
+[Padrões Etiquetas](casos_etiquetas.csv)
+
+
 <p align="center">
   <img src="imagens/unb.png" alt="unb_logo" width="200" height="100">
 </p>
