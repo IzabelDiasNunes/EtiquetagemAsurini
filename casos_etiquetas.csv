@@ -1,0 +1,18 @@
+Afixo/tema,Padrão,O que é,Etiqueta,OBS
+Sufixo,-PE,Caso locativo pontual,NONE,"Não será nem argumento, nem predicado"
+Sufixo,-IMO,Caso locativo difuso,NONE,
+Sufixo,-I,Caso locativo situacional,NONE,
+Sufixo,- y’ým,Negação de gerúndio,PRED,
+Sufixo,- e’ým,Negação de gerúndio,PRED,
+Sufixo,- y’ýw,Negação de gerúndio,PRED,
+Sufixo,-A,caso argumentativo,ARG,
+Prefixo,A-,Série 1 do modo indicativo,PRED,
+Prefixo,O-,Série 1 do modo indicativo,PRED,
+Prefixo,PE-,Série 1 do modo indicativo,PRED,
+Prefixo,ERE-,Série 1 do modo indicativo,PRED,
+Prefixo,SA-,Série 1 do modo indicativo,PRED,
+Prefixo,ORO-,Série 1 do modo indicativo,PRED,
+Sufixo,- IHÍ,Negação de indicativo,PRED,
+Sufixo,- RAPO,Proibitivo/Advertência,PRED,
+Sufixo,- REME,Proibitivo/Advertência,PRED,
+Prefixo,- MO -,Causativo aumento de valência,PRED,
